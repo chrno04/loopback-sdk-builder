@@ -19,8 +19,8 @@ var chalk = require('chalk');
  * CLI Options Description
  */
 var argv = optimist
-  .usage('\n******************************************* LoopBack SDK Builder 2.0 *******************************************\n' +
-  '\nGenerate Client SDK for your LoopBack Application.' +
+  .usage('\n******************************************* LoopBack SDK Builder 3.0 *******************************************\n' +
+  '\nGenerate Client SDK for your LoopBack V3 Application.' +
   '\nUsage:' +
   '\n ./node_modules/.bin/lb-sdk server/server app/shared/sdk -d [ng2web | ng2native | ng2universal] -i [enabled | disabled] -v [enabled | strict | disabled]')
   .describe('l', 'Client\'s library (angular, react, vuejs <todo> ...)')
@@ -32,7 +32,7 @@ var argv = optimist
   .describe('f', 'Generate only FireLoop SDK + Auth Services')
   .describe('q', 'quiet mode - no console output (forces -w)')
   .describe('t', 'Enable Typescript default true ( React Only )')
-  .default('l', 'angular2')
+  .default('l', 'angularNext')
   .default('d', 'ng2web')
   .default('i', 'enabled')
   .default('w', 'disabled')
@@ -74,8 +74,13 @@ if (!argv['q']) {
   console.log(chalk.green('*                    Michał Frączkiewicz <https://github.com/bonaventoora>               *'));
   console.log(chalk.green('*                                                                                        *'));
   console.log(chalk.green('*                                 ORIGINALLY FORKED FROM                                 *'));
-  console.log(chalk.green('*                      Miroslav Bajtos\' <miroslav@strongloop.com>                        *'));
+  console.log(chalk.green('*                      Miroslav Bajtos\' <miroslav@strongloop.com>                       *'));
   console.log(chalk.green('*                   https://github.com/strongloop/loopback-sdk-angular                   *'));
+  console.log(chalk.green('*                                                                                        *'));
+  console.log(chalk.green('=========================================================================================='));
+  console.log(chalk.green('*                                        FORKED BY                                       *'));
+  console.log(chalk.green('*                      Chrno2204     \' <ajspanama@outlook  .com>                        *'));
+  console.log(chalk.green('*                   https://github.com/chrno04/loopback-sdk-builder                      *'));
   console.log(chalk.green('*                                                                                        *'));
   console.log(chalk.green('=========================================================================================='));
   
@@ -93,7 +98,7 @@ var app = require(appFile);
 // Default Values
 var context = {
   app: app,
-  framework: argv['l'] || 'angular2',
+  framework: argv['l'] || 'angularNext',
   moduleName: argv['module-name'] || 'sdk',
   apiUrl: argv['url'] || app.get('restApiRoot') || '/api',
   outputFolder: argv._[1],
